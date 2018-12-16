@@ -6,7 +6,7 @@ body {
 
 
 .main-background {
-    background: #080441;
+    background: #FFFFFF;
     /* position: fixed;  */
     height: 100%;
     width: 100%;
@@ -19,13 +19,17 @@ body {
 
 .full-card {
     display: flex;
-  justify-content: center;
-  align-items: center;
-    height:100vh;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     /* padding-top:45vh; */
 }
 .text {
-    
+
+}
+
+li {
+    list-style: none;
 }
 
 /*# sourceMappingURL=styles.chunk.css.map*/
