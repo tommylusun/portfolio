@@ -1,0 +1,23 @@
+{
+  "name": "nextjs",
+  "version": "1.0.0",
+  "description": "A portfolio web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Tommy Lusun",
+  "license": "MIT",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "animejs": "^2.2.0",
+    "aos": "^v3.0.0-beta.6",
+    "next": "^7.0.2",
+    "node-sass": "^4.10.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
