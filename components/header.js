@@ -8,31 +8,12 @@ class Header extends Component {
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
         const AOS = isBrowser ? require('aos') : undefined;
-        
 
         this.aos = AOS;
         this.aos.init({
             duration: 500,
             anchorPlacement: 'bottom-top'
         });
-        window.addEventListener('aos:in', ({ detail }) => {
-            console.log('animated in', detail);
-        });
-
-        // window.onscroll = function() {
-        //     if (window.pageYOffset >= 1) {
-        //         header.classList.add("sticky");
-        //       } else {
-        //         header.classList.remove("sticky");
-        //       }
-        // };
-        // var header = document.getElementById("header");
-        // var sticky = header.offsetTop;
-
-        console.log(window);
-    }
-    myFunction() {
-        
     }
     componentWillReceiveProps (){ 
         this.aos.refresh(); 
@@ -48,17 +29,22 @@ class Header extends Component {
             <div className="nav-tab">
                     <li>
                         <Link href="/about">
-                            <h3>About</h3>
+                            <p>About</p>
                         </Link>
                     </li>
                     <li>
                         <Link href="/contact">
-                            <h3>Contact</h3>
+                            <p>Contact</p>
                         </Link>
                     </li>
                     <li>
                         <Link href="/projects">
-                            <h3>Projects</h3>
+                            <p>Projects</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/blog">
+                            <p>Blog</p>
                         </Link>
                     </li>
             </div>
@@ -84,6 +70,9 @@ class Header extends Component {
             list-style: none;
             width: 100px;
             cursor: pointer;
+        }
+        p {
+            font-size: 20px;
         }
         li:hover {
             color: gray;
