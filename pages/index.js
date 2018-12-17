@@ -3,6 +3,7 @@ import Link from 'next/link'
 import HomePage from '../components/homePage';
 import './styles.css';
 import Header from '../components/header';
+import Head from 'next/head';
 
 const Index = () => (
   <div className="main-background">
