@@ -7,7 +7,6 @@ body {
 
 .main-background {
     background: #FFFFFF;
-    /* position: fixed;  */
     height: 100%;
     width: 100%;
 
@@ -23,9 +22,6 @@ body {
     align-items: center;
     height: 100vh;
     /* padding-top:45vh; */
-}
-.text {
-
 }
 
 li {

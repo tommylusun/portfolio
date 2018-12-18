@@ -34,10 +34,11 @@ class HomePage extends Component {
         return (
         <div className="title-card title">
             <div className="full-card first-card" >
-                <svg className="welcome" style={{top: '30vh'}} width="428" height="428" viewBox="0 0 128 128">
+                {/* <svg className="welcome" style={{top: '30vh'}} width="428" height="428" viewBox="0 0 128 128">
                         <polygon points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96"></polygon>
-                </svg>
+                </svg> */}
                 <div className="text" >Welcome</div>
+                <div className="bottom-text"> <span className="down-arrow"></span></div>
             </div>
             <div className="full-card second-card">
                 <div className="text" data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-left">Scroll down..</div>
@@ -73,6 +74,17 @@ class HomePage extends Component {
             background: linear-gradient(180deg, #1F4788 0%, #1F4788 35%, #264348 100%);
             color: white;
             height: 100vh;
+        }
+        .bottom-text {
+            align-self: flex-end;
+            text-align: center;
+        }
+        .down-arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 10px;
+            transform: rotate(45deg);
         }
       `}</style>
 
