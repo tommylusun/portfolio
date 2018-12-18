@@ -17,6 +17,7 @@ export default class MyDocument extends Document {
             <style>{`body { margin: 0 } /* custom! */`}</style>
             <title>Tommy Lusun</title>
             <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"></link>
+            <meta name="google-site-verification" content="KjA3J9dGfJe1GS-VcfV3zlv4Zwxpd3B208jnyCdLFb8" />
         </Head>
         <body className="custom_class">
           <Main />
