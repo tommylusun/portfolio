@@ -8,6 +8,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
+    "export": "npm run build && next export",
     "heroku-postbuild": "npm run build"
   },
   "author": "Tommy Lusun",
