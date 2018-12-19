@@ -6,7 +6,7 @@ import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
 
 
-class BlogList extends Component {
+class BlogPostComponent extends Component {
     state = {
         doc: null,
       }
@@ -27,7 +27,7 @@ class BlogList extends Component {
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
         const AOS = isBrowser ? require('aos') : undefined;
-        
+        console.log("props: " + this.props);
 
         this.aos = AOS;
         this.aos.init({
@@ -38,7 +38,7 @@ class BlogList extends Component {
         const apiEndpoint = 'https://tlusun-portfolio.prismic.io/api/v2';
   
         Prismic.api(apiEndpoint).then(api => {
-            api.query(Prismic.Predicates.at('document.type', 'blog_post')).then(response => {
+            api.query(Prismic.Predicates.at('document.id', this.props.id)).then(response => {
                 console.log(response);
             if (response) {
                 this.setState({ doc: response.results });
@@ -47,58 +47,72 @@ class BlogList extends Component {
         });
 
     }
-
     componentWillReceiveProps (){ 
         this.aos.refresh(); 
     } 
 
     render() {
         
-        let posts = null;
+        let post = null;
         if (this.state.doc) {
-            posts = this.state.doc.map((post) => {
-                const document = post.data;
-                return (
+            const document = this.state.doc[0].data;
+            console.log(document);
+            post = (
                     <div className="post">
-                        <Link href={"/blogPost?id=" + post.id}>
-                            <div style={{cursor: 'pointer'}}>
-                                <div>
-                                    <img style={{maxWidth: '100%'}} src={document.image.url}></img>
-                                </div>
-                                <div style={{fontSize: '1.5em'}}>
+                        <div className="post-header">
+                            <div style={{fontSize: '3em'}}>
                                     {RichText.asText(document.title)}
                                 </div>
                                 <div className="date">
                                     <p>{document.date}</p>
                                 </div>
-                                <div style={{fontSize: '1em'}}>
-                                    {RichText.render(document.blurb, this.linkResolver)}
-                                </div>
+                            <div >
+                                {/* <img style={{maxWidth: '100%', margin: 'auto'}} src={document.image.url}></img> */}
+                                {RichText.render(document.blurb, this.linkResolver)}
+
                             </div>
-                        </Link>
+                        </div>
+                            
+                        <div className="post-body">
+
+                            <div style={{fontSize: '1em'}}>
+                                {RichText.render(document.body, this.linkResolver)}
+                            </div>
+                            {!!document.body_image_1.url ? (<div className="body-image">
+                                <img style={{maxWidth: '100%'}} src={document.body_image_1.url}></img>
+                            </div>) : null}
+                        
+                        </div>
+                            
                         <div className="post-footer">
                         </div>
                         <style jsx>{`
                             .post {
                                 display: block;
                                 text-align: start;
-                                border-radius: 5px;
-                                margin: 10px;
-                                padding: 10px;
-                                max-width: 25%;
-                                min-width: 200px;
+                                width: 100%;
                                 transition-duration: 1s;
                                 background: #ECF0F180;
                             }
-                            .post:hover{
-                                transform: scale(1.025);
-                                transition-duration: 0.5s;
-                                background: #ECF0F1F0;
-                                box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4);
+                            .post-header{
+                                text-align: center;
+                                background: #BE90D4;
+                                color: #ECF0F1F0;
+                                padding: 50px;
                             }
                             .date {
                                 font-style: italic;
                                 font-size: 0.75rem;
+                            }
+                            .post-body {
+                                max-width: 50%;
+                                margin: auto;
+                                padding-top: 50px;
+                            }
+                            .body-image {
+                                text-align: center;
+                                
+                                margin: auto;
                             }
                             .post-footer {
                                 /* border-bottom: 1px solid grey; */
@@ -107,22 +121,14 @@ class BlogList extends Component {
                         </style>
                     </div>
                 );
-            });
         }
         return (
             <div className="blog-container">
-            <div className="head">
-                
-            </div>
-            <div className="blog-list-title">
-                <div className="blog-header">
-                    <p style={{fontSize: '1.5em'}}>Latest Posts</p>
-                    <p style={{fontSize: '0.5em'}}>These are posts I make. They can be about anything.</p>
+                <div className="head">               
                 </div>
-            </div>
-            <div className="blog-list">
-                {posts}
-            </div>
+                <div className="blog-post">
+                    {post}
+                </div>
             <style jsx>{`
                 .head {
                     height: 80px;
@@ -132,22 +138,9 @@ class BlogList extends Component {
                     min-height: 100vh;
                     // background: linear-gradient(180deg, #FFB3A7 0%, #BE90D4 35%, #BE90D4 100%);
                 }
-                .blog-list {
+                .blog-post {
                     display: flex;
-                    width: 80%;
-                    margin: auto;
-                }
-                .blog-list-title {
-                    background: #BE90D4;
-                    color: #ECF0F1F0;
-                    display: flex;
-                    // padding-left: 25px;
-                    font-size: 2rem;
-                }
-                .blog-header{
-                    width: 80%;
-                    padding-left: 25px;
-                    padding-bottom: 40px;
+                    width: 100%;
                     margin: auto;
                 }
             `}</style>
@@ -157,4 +150,4 @@ class BlogList extends Component {
     }
 }
 
-export default BlogList;
+export default BlogPostComponent;

@@ -2,7 +2,7 @@ import Header from '../components/header';
 import BlogList from '../components/blogList';
 
 
-const Projects = () => {
+const Blog = () => {
     return (
     
     <div className="main-background">
@@ -12,4 +12,4 @@ const Projects = () => {
   )
 }
   
-export default Projects;
+export default Blog;

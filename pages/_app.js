@@ -1,5 +1,6 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App, { Container} from 'next/app'
+import Head from 'next/head';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -18,6 +19,10 @@ export default class MyApp extends App {
 
     return (
       <Container>
+          <Head>
+            <title>Tommy Lusun</title>
+            <link rel="stylesheet" type="text/css" href="./styles.css"/>
+        </Head>
         <Component {...pageProps} />
       </Container>
     )

@@ -2,9 +2,12 @@ import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
 import anime from 'animejs';
 import Link from 'next/link'
+import { SocialIcon } from 'react-social-icons';
+
 
 class Header extends Component {
 
+    socialMedia=['twitter.com','google.com','instagram.com','linkedin.com'];
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
         const AOS = isBrowser ? require('aos') : undefined;
@@ -20,33 +23,58 @@ class Header extends Component {
     } 
 
     render() {
+
+        const socialMedia = this.socialMedia.map( (url) => {
+            return (
+                <>
+                    <div className="social-icon"style={{display: 'inline', padding: '5px'}}>
+                        <SocialIcon url={url}/>
+                    </div>
+                    <style jsx>{`
+                        .social-icon {
+                            transition-duration: 0.5s;
+                            {/* width: calc(100%/${this.socialMedia.length}); */}
+                        }
+                        .social-icon:hover {
+                            transform: scale(1.1);
+                            transition-duration: 0.1s;
+                            {/* border-radius: 50%; */}
+                            {/* box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4); */}
+                            }
+                    `}</style>
+                </>
+            );
+        });
         
         return (
         <div id="header" className="header">
-            <Link href="/">
+            <Link prefetch href="/">
                 <div className="header-title">Tommy Lusun</div>
             </Link>
             <div className="nav-tab">
+                <Link prefetch href="/about">
                     <li>
-                        <Link href="/about">
-                            <p>About</p>
-                        </Link>
-                    </li>
+                        <p>About</p>
+                    </li>    
+                </Link>
+                {/* <Link prefetch href="/contact">
+                <li>
+                    <p>Contact</p>
+                </li>
+                </Link> */}
+                <Link prefetch href="/projects">
                     <li>
-                        <Link href="/contact">
-                            <p>Contact</p>
-                        </Link>
+                        <p>Projects</p>
                     </li>
+                </Link>
+                <Link prefetch href="/blog">
                     <li>
-                        <Link href="/projects">
-                            <p>Projects</p>
-                        </Link>
+                        <p>Blog</p>
                     </li>
-                    <li>
-                        <Link href="/blog">
-                            <p>Blog</p>
-                        </Link>
-                    </li>
+                </Link>
+            </div>
+            <div className="social-tab">
+                {socialMedia}
             </div>
         <style jsx>{`
         .header {
@@ -64,6 +92,7 @@ class Header extends Component {
         }
         .header-title {
             font-size: 2rem;
+            width: 20%;
             cursor: pointer;
         }
         li {
@@ -72,17 +101,24 @@ class Header extends Component {
             cursor: pointer;
         }
         p {
-            font-size: 20px;
+            font-size: 1.2em;
         }
         li:hover {
             color: gray;
+            border-bottom: 1px solid gray;
         }
         .nav-tab{
-            width: 50%;
+            width: 40%;
             display: flex;
             flex-direction: row;
+            justify-content: center;
             text-align: center;
-            margin-left: 50px;
+        }
+        .social-tab {
+            width: 20%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
         }
       `}</style>
 
