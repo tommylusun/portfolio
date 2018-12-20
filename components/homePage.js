@@ -37,25 +37,31 @@ class HomePage extends Component {
                 {/* <svg className="welcome" style={{top: '30vh'}} width="428" height="428" viewBox="0 0 128 128">
                         <polygon points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96"></polygon>
                 </svg> */}
-                <div className="text" >Welcome</div>
+                <div className="header-text" >Hi, I'm a developer</div>
+                {/* <div className="text">(but not a designer) </div> */}
                 <div className="bottom-text"> <span className="down-arrow"></span></div>
             </div>
             <div className="full-card second-card">
-                <div className="text" data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-left">Scroll down..</div>
+                <div className="header-text" data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-left">Scroll down..</div>
             </div>
 
             <div className="full-card third-card">
-                <div className="text" data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-left">for a special message</div>
+                <div className="header-text" data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-left">for a special message</div>
             </div>
 
             <div className="full-card fourth-card">
-                <div className="text" data-aos-id="super-duper" data-aos-offset="-300" data-aos-anchor-placement="center-center" data-aos-delay="500" data-aos="fade-in">Hi</div>
+                <div className="header-text" data-aos-id="super-duper" data-aos-offset="-300" data-aos-anchor-placement="center-center" data-aos-delay="500" data-aos="fade-in">Hi</div>
             </div>
             
         <style jsx>{`
-        .welcome {
-            position: absolute;
-            top: 50vh;
+        .header-text {
+            font-size: 5em;
+            width: 100%;
+            margin: auto;
+        }
+        text {
+            margin: auto;
+            font-size: 1em;
         }
         .title-card {
             text-align: center;
@@ -76,14 +82,14 @@ class HomePage extends Component {
             height: 100vh;
         }
         .bottom-text {
-            align-self: flex-end;
+            padding: 30px;
             text-align: center;
         }
         .down-arrow {
             border: solid black;
             border-width: 0 3px 3px 0;
             display: inline-block;
-            padding: 10px;
+            padding: 15px;
             transform: rotate(45deg);
         }
       `}</style>

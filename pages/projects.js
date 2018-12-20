@@ -5,7 +5,7 @@ const Projects = () => {
     return (
     
     <div className="main-background">
-        <Header></Header>
+        {/* <Header></Header> */}
         <div className="title full-card">
             <div style={{margin: '50px'}}><p>Project 1:</p></div>
             <div>

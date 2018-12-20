@@ -5,12 +5,46 @@ import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
 
-
 class BlogPostComponent extends Component {
     state = {
         doc: null,
       }
 
+    // Function to add unique key to props
+    propsWithUniqueKey = function(props, key) {
+        return Object.assign(props || {}, { key });
+    };
+    
+    // -- HTML Serializer
+    // This function will be used to change the way the HTML is loaded
+    htmlSerializer = (type, element, content, children, key) => {
+        var props = {};
+        console.log(type);
+        switch(type) {
+            case RichText.Elements.paragraph:
+                props = {style: {lineHeight: '1.7em'}};
+                return React.createElement('p', this.propsWithUniqueKey(props, key), children);
+
+            // Don't wrap images in a <p> tag
+            case RichText.Elements.image: 
+                props = { src: element.url , alt: element.url || '', style: {width: '100%', maxWidth: '100%'} };
+                return React.createElement('img', this.propsWithUniqueKey(props, key));
+            
+            case RichText.Elements.embed: // Embed
+                props = Object.assign({
+                  "data-oembed": element.oembed.embed_url,
+                  "data-oembed-type": element.oembed.type,
+                  "data-oembed-provider": element.oembed.provider_name,
+                  style: {width: '100%', maxWidth: '100%'}
+                }, element.label ? {className: element.label} : {});
+                const embedHtml = React.createElement('div', {dangerouslySetInnerHTML: {__html: element.oembed.html,style: {width: '100%', maxWidth: '100%'}}});
+                return React.createElement('div', this.propsWithUniqueKey(props, key), embedHtml);
+
+            // Return null to stick with the default behavior
+            default: 
+                return null;
+        }
+    };
       	
     // Link Resolver
     linkResolver(doc) {
@@ -60,23 +94,25 @@ class BlogPostComponent extends Component {
             post = (
                     <div className="post">
                         <div className="post-header">
-                            <div style={{fontSize: '3em'}}>
+                            <div className="header-content">
+                                <div style={{fontSize: '3em'}}>
                                     {RichText.asText(document.title)}
                                 </div>
                                 <div className="date">
                                     <p>{document.date}</p>
                                 </div>
-                            <div >
-                                {/* <img style={{maxWidth: '100%', margin: 'auto'}} src={document.image.url}></img> */}
-                                {RichText.render(document.blurb, this.linkResolver)}
+                                <div style={{fontSize: '1em'}}>
+                                    {/* <img style={{maxWidth: '100%', margin: 'auto'}} src={document.image.url}></img> */}
+                                    {RichText.render(document.blurb, this.linkResolver)}
 
+                                </div>
                             </div>
                         </div>
                             
                         <div className="post-body">
 
-                            <div style={{fontSize: '1em'}}>
-                                {RichText.render(document.body, this.linkResolver)}
+                            <div style={{fontSize: '1.05em'}}>
+                                {RichText.render(document.body, this.linkResolver, this.htmlSerializer)}
                             </div>
                             {!!document.body_image_1.url ? (<div className="body-image">
                                 <img style={{maxWidth: '100%'}} src={document.body_image_1.url}></img>
@@ -96,18 +132,23 @@ class BlogPostComponent extends Component {
                             }
                             .post-header{
                                 text-align: center;
+
                                 background: #BE90D4;
                                 color: #ECF0F1F0;
+                            }
+                            .header-content {
+                                margin: auto;
+                                max-width: 700px;
                                 padding: 50px;
                             }
                             .date {
                                 font-style: italic;
-                                font-size: 0.75rem;
+                                font-size: 1rem;
                             }
                             .post-body {
-                                max-width: 50%;
+                                max-width: 700px;
                                 margin: auto;
-                                padding-top: 50px;
+                                padding: 40px;
                             }
                             .body-image {
                                 text-align: center;
@@ -117,7 +158,12 @@ class BlogPostComponent extends Component {
                             .post-footer {
                                 /* border-bottom: 1px solid grey; */
                                 width: 300px;
-                            }`}
+                            }
+                            img {
+                                width: 100%;
+                                max-width: 100%;
+                            }
+                            `}
                         </style>
                     </div>
                 );

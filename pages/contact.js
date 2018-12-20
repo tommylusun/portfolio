@@ -2,7 +2,7 @@ import Header from '../components/header';
 
 const Contact = () => (
     <div className="main-background">
-        <Header></Header>
+        {/* <Header></Header> */}
         <div className="title full-card">
             <p>Contact my number: 911</p>
         </div>

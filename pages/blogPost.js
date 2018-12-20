@@ -8,10 +8,9 @@ import BlogPostComponent from '../components/blogPostComponent';
 
 
 const BlogPost2 = withRouter((props) => {
-    console.log(props);
     return (
         <div className="main-background">
-            <Header></Header>
+            {/* <Header></Header> */}
             <BlogPostComponent id={props.router.query.id}></BlogPostComponent>
         </div>
     )

@@ -33,14 +33,11 @@ class Header extends Component {
                     <style jsx>{`
                         .social-icon {
                             transition-duration: 0.5s;
-                            {/* width: calc(100%/${this.socialMedia.length}); */}
                         }
                         .social-icon:hover {
                             transform: scale(1.1);
                             transition-duration: 0.1s;
-                            {/* border-radius: 50%; */}
-                            {/* box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4); */}
-                            }
+                        }
                     `}</style>
                 </>
             );
@@ -89,6 +86,7 @@ class Header extends Component {
             display: flex;
             // justify-content: center;
             align-items: center;
+            color: #454545;
         }
         .header-title {
             font-size: 2rem;
@@ -102,6 +100,7 @@ class Header extends Component {
         }
         p {
             font-size: 1.2em;
+            border-bottom: 1px solid rgba(0,0,0,0);
         }
         li:hover {
             color: gray;

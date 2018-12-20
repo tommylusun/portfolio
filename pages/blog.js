@@ -6,7 +6,7 @@ const Blog = () => {
     return (
     
     <div className="main-background">
-        <Header></Header>
+        {/* <Header></Header> */}
         <BlogList></BlogList>
     </div>
   )

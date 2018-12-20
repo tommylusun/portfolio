@@ -13,14 +13,18 @@ body {
 }
 
 .title {
-    font-size: 5vw;
+    /* font-size: 5vw; */
 }
 
 .full-card {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     height: 100vh;
+    color: #353535;
+    flex-flow: column;
+    margin: -2px;
     /* padding-top:45vh; */
 }
 

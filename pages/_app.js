@@ -1,6 +1,8 @@
 import React from 'react'
 import App, { Container} from 'next/app'
 import Head from 'next/head';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -23,7 +25,9 @@ export default class MyApp extends App {
             <title>Tommy Lusun</title>
             <link rel="stylesheet" type="text/css" href="./styles.css"/>
         </Head>
+        <Header></Header>
         <Component {...pageProps} />
+        <Footer></Footer>
       </Container>
     )
   }
