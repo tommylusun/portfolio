@@ -9,21 +9,8 @@ import Link from 'next/link';
 class BlogList extends Component {
     state = {
         doc: null,
-      }
-
-      	
-    // Link Resolver
-    linkResolver(doc) {
-        // Define the url depending on the document type
-        if (doc.type === 'page') {
-        return '/page/' + doc.uid;
-        } else if (doc.type === 'blog_post') {
-        return '/blog/' + doc.uid;
-        }
-    
-        // Default to homepage
-        return '/';
     }
+
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
         const AOS = isBrowser ? require('aos') : undefined;
@@ -38,8 +25,8 @@ class BlogList extends Component {
         const apiEndpoint = 'https://tlusun-portfolio.prismic.io/api/v2';
   
         Prismic.api(apiEndpoint).then(api => {
-            api.query(Prismic.Predicates.at('document.type', 'blog_post')).then(response => {
-                console.log(response);
+            api.query(Prismic.Predicates.at('document.type', 'projects')).then(response => {
+                console.log(response.results);
             if (response) {
                 this.setState({ doc: response.results });
             }
@@ -59,21 +46,17 @@ class BlogList extends Component {
             posts = this.state.doc.map((post) => {
                 const document = post.data;
                 return (
-                    <Link href={"/blogPost?id=" + post.id}>
-                        <div className="post" style={{cursor: 'pointer'}}>
-                        
+                        <div className="post">
+                            <p style={{fontSize: '3em'}}>{RichText.asText(document.project_name)}</p>
                             <div >
                                 <div>
                                     <img style={{maxWidth: '100%'}} src={document.image.url}></img>
                                 </div>
-                                <div style={{fontSize: '1.5em'}}>
-                                    {RichText.asText(document.title)}
+                                <div style={{fontSize: '1em'}}>
+                                    {RichText.asText(document.description)}
                                 </div>
                                 <div className="date">
                                     <p>{document.date}</p>
-                                </div>
-                                <div style={{fontSize: '1em'}}>
-                                    {RichText.render(document.blurb, this.linkResolver)}
                                 </div>
                             </div>
                        
@@ -82,45 +65,35 @@ class BlogList extends Component {
                         <style jsx>{`
                             .post {
                                 display: block;
-                                text-align: start;
-                                border-radius: 5px;
-                                margin: 10px;
-                                padding: 10px;
-                                max-width: 25%;
-                                min-width: 200px;
-                                transition-duration: 1s;
-                                background: #ECF0F180;
-                            }
-                            .post:hover{
-                                transform: scale(1.025);
-                                transition-duration: 0.5s;
-                                background: #ECF0F1F0;
-                                box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4);
+                                text-align: center;
+                                padding: 50px;
+                                height: 400px;
+                                margin-bottom: 150px;
+                                margin-top: 80px;
+                                background: #66a6ff;
+                                background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+                                background-blend-mode: multiply,multiply;
+                                box-shadow: 0px 10px 25px -9px rgba(0,0,0,0.3);
+                                color: white;
                             }
                             .date {
                                 font-style: italic;
                                 font-size: 0.75rem;
                             }
-                            .post-footer {
-                                /* border-bottom: 1px solid grey; */
-                                width: 300px;
-                            }`}
+                            `}
                         </style>
                         </div>
-                    </Link>
                 );
             });
         }
         return (
             <div className="blog-container">
-            
             <div className="blog-list-title">
                 <div className="head">
                 
                 </div>
                 <div className="blog-header">
-                    <p style={{fontSize: '1.5em'}}>Latest Posts</p>
-                    <p style={{fontSize: '0.5em'}}>These are posts I make. They can be about anything.</p>
+                    <p style={{fontSize: '2em'}}>Projects</p>
                 </div>
             </div>
             <div className="blog-list">
@@ -135,14 +108,12 @@ class BlogList extends Component {
                     min-height: 100vh;
                     // background: linear-gradient(180deg, #FFB3A7 0%, #BE90D4 35%, #BE90D4 100%);
                 }
-                .blog-list {
-                    display: flex;
-                    width: 80%;
+                .blog-list {                    
+                    width: 100%;
                     margin: auto;
                 }
                 .blog-list-title {
-                    background: #BE90D4;
-                    background-image: linear-gradient(-205deg, #6a11cb 0%, #884D80 100%);
+                    background-image: linear-gradient(-205deg, #6a11cb 0%, #5f72bd 100%);
                     color: #ECF0F1F0;
                     font-size: 2rem;
                 }
@@ -150,6 +121,7 @@ class BlogList extends Component {
                     width: 80%;
                     padding-left: 25px;
                     padding-bottom: 40px;
+                    text-align: center;
                     margin: auto;
                 }
             `}</style>

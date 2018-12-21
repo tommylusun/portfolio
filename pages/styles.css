@@ -1,14 +1,14 @@
 body {
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    font-family: 'Oxygen', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 
 .main-background {
     background: #FFFFFF;
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
 
 }
 
@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 101vh;
     color: #353535;
     flex-flow: column;
     margin: -2px;

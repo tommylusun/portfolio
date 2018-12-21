@@ -30,8 +30,6 @@ class Footer extends Component {
         <style jsx>{`
         .footer {
             width: 100% ;
-            padding-left: 10%;
-            padding-right: 10%;
             height: 80px;
             background: #151515;
             color: #ECF0F1F0;
@@ -39,6 +37,9 @@ class Footer extends Component {
             display: flex;
             // justify-content: center;
             align-items: center;
+        }
+        a {
+            padding-left: 100px;
         }
       `}</style>
 

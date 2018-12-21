@@ -55,9 +55,15 @@ class HomePage extends Component {
             
         <style jsx>{`
         .header-text {
-            font-size: 5em;
-            width: 100%;
+            font-size: 4em;
+            font-weight: 500;
+            //width: 100%;
+            padding: 15px;
+           // border: 2px solid #353535;
+            //border-radius: 25px;
+            color: #DDDDDD;
             margin: auto;
+            //background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
         }
         text {
             margin: auto;
@@ -67,17 +73,18 @@ class HomePage extends Component {
             text-align: center;
         }
         .first-card {
-            background: linear-gradient(180deg, #FFB3A7 0%, #FFB3A7 35%, #BE90D4 100%);
+            background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
         }
         .second-card {
-            background: #BE90D4;
+            //background: #BE90D4;
             height: 50vh;
         }
         .third-card {
-            background: linear-gradient(180deg, #BE90D4 0%, #BE90D4 35%, #1F4788 100%);
+            //background: linear-gradient(180deg, #BE90D4 0%, #BE90D4 35%, #1F4788 100%);
+            
         }
         .fourth-card {
-            background: linear-gradient(180deg, #1F4788 0%, #1F4788 35%, #264348 100%);
+            //background: linear-gradient(180deg, #1F4788 0%, #1F4788 35%, #264348 100%);
             color: white;
             height: 100vh;
         }

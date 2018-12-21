@@ -91,9 +91,15 @@ class BlogPostComponent extends Component {
         if (this.state.doc) {
             const document = this.state.doc[0].data;
             console.log(document);
+            let color = "#A8BFFF";
+            if (!!document.primary_color){
+                color = document.primary_color;
+            };
             post = (
                     <div className="post">
                         <div className="post-header">
+                        <div className="head">               
+                            </div>
                             <div className="header-content">
                                 <div style={{fontSize: '3em'}}>
                                     {RichText.asText(document.title)}
@@ -123,6 +129,10 @@ class BlogPostComponent extends Component {
                         <div className="post-footer">
                         </div>
                         <style jsx>{`
+                            .head {
+                                height: 80px;
+                                width: 100%;
+                            }
                             .post {
                                 display: block;
                                 text-align: start;
@@ -133,7 +143,9 @@ class BlogPostComponent extends Component {
                             .post-header{
                                 text-align: center;
 
-                                background: #BE90D4;
+                                //background: ${color};
+                                //background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+                                background-image: linear-gradient(-205deg, ${color} 0%, #884D80 100%);
                                 color: #ECF0F1F0;
                             }
                             .header-content {
@@ -170,16 +182,10 @@ class BlogPostComponent extends Component {
         }
         return (
             <div className="blog-container">
-                <div className="head">               
-                </div>
                 <div className="blog-post">
                     {post}
                 </div>
             <style jsx>{`
-                .head {
-                    height: 80px;
-                    width: 100%;
-                }
                 .blog-container {
                     min-height: 100vh;
                     // background: linear-gradient(180deg, #FFB3A7 0%, #BE90D4 35%, #BE90D4 100%);

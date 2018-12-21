@@ -45,66 +45,83 @@ class Header extends Component {
         
         return (
         <div id="header" className="header">
-            <Link prefetch href="/">
-                <div className="header-title">Tommy Lusun</div>
-            </Link>
-            <div className="nav-tab">
-                <Link prefetch href="/about">
-                    <li>
-                        <p>About</p>
-                    </li>    
+            <div className="header-content">
+                <Link prefetch href="/">
+                    <div className="header-title">Tommy Lusun</div>
                 </Link>
-                {/* <Link prefetch href="/contact">
-                <li>
-                    <p>Contact</p>
-                </li>
-                </Link> */}
-                <Link prefetch href="/projects">
+                <div className="nav-tab">
+                    <Link prefetch href="/about">
+                        <li>
+                            <p>About</p>
+                        </li>    
+                    </Link>
+                    {/* <Link prefetch href="/contact">
                     <li>
-                        <p>Projects</p>
+                        <p>Contact</p>
                     </li>
-                </Link>
-                <Link prefetch href="/blog">
-                    <li>
-                        <p>Blog</p>
-                    </li>
-                </Link>
-            </div>
-            <div className="social-tab">
-                {socialMedia}
+                    </Link> */}
+                    <Link prefetch href="/projects">
+                        <li>
+                            <p>Projects</p>
+                        </li>
+                    </Link>
+                    <Link prefetch href="/blog">
+                        <li>
+                            <p>Blog</p>
+                        </li>
+                    </Link>
+                </div>
+                <div className="social-tab">
+                    {socialMedia}
+                </div>
             </div>
         <style jsx>{`
         .header {
             position: fixed;
             top: 0px;
-            width: 100% ;
-            padding-left: 10%;
-            padding-right: 10%;
+            width: 100%;
             height: 80px;
-            background: #ECF0F1F0;
+            background: #00000080;
+            
             z-index: 9999;
+            
+            color: #B5B5B5;
+        }
+        .header-content {
             display: flex;
-            // justify-content: center;
+            justify-content: center;
             align-items: center;
-            color: #454545;
+            height: 100%;
         }
         .header-title {
             font-size: 2rem;
             width: 20%;
             cursor: pointer;
+            transition-duration: 0.8s;
+
+        }
+        .header-title:hover {
+            color: rgba(255,255,255,1);
+            transition-duration: 0.4s;
+
         }
         li {
             list-style: none;
             width: 100px;
+            height: 95%;
             cursor: pointer;
+            transition-duration: 0.8s;
+            border-bottom: 1px solid rgba(0,0,0,0);
+
+
         }
         p {
             font-size: 1.2em;
-            border-bottom: 1px solid rgba(0,0,0,0);
         }
         li:hover {
-            color: gray;
-            border-bottom: 1px solid gray;
+            color: rgba(255,255,255,1);
+            border-bottom: 1px solid rgba(255,255,255,1);
+            transition-duration: 0.4s;
         }
         .nav-tab{
             width: 40%;

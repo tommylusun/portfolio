@@ -7,7 +7,6 @@ import Head from 'next/head';
 
 const Index = () => (
   <div className="main-background">
-    <Header></Header>
     
     <HomePage></HomePage>
   </div>
