@@ -12,23 +12,6 @@ body {
 
 }
 
-.title {
-    /* font-size: 5vw; */
-}
-
-.full-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: 101vh;
-    color: #353535;
-    flex-flow: column;
-    margin: -2px;
-    overflow: hidden;
-    /* padding-top:45vh; */
-}
-
 li {
     list-style: none;
 }

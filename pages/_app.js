@@ -23,7 +23,8 @@ export default class MyApp extends App {
       <Container>
           <Head>
             <title>Tommy Lusun</title>
-            <link rel="stylesheet" type="text/css" href="./styles.css"/>
+            {/* <link rel="stylesheet" type="text/css" href="./styles.css"/> */}
+            <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         </Head>
         <Header></Header>
         <Component {...pageProps} />

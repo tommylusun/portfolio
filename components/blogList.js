@@ -84,7 +84,7 @@ class BlogList extends Component {
                                 display: block;
                                 text-align: start;
                                 border-radius: 5px;
-                                margin: 10px;
+                                margin-top: 10px;
                                 padding: 10px;
                                 max-width: 20%;
                                 min-width: 200px;
@@ -137,6 +137,7 @@ class BlogList extends Component {
                 }
                 .blog-list {
                     display: flex;
+                    flex-wrap: wrap;
                     width: 80%;
                     margin: auto;
                 }

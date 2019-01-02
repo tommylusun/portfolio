@@ -1,0 +1,125 @@
+
+.header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background: #000000B0;
+    z-index: 1;
+    color: #B5B5B5;
+}
+
+
+@media (min-width: 781px){
+    .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        width: 90%;
+        margin: auto;
+    }
+    .desktop-nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 70%;
+    }
+    .mobile-nav{ 
+        display: none;
+    }
+    .header-title {
+        font-size: 2rem;
+        width: 30%;
+        cursor: pointer;
+        transition-duration: 0.8s;
+        text-align: start;
+    }
+    .header-title:hover {
+        color: rgba(255,255,255,1);
+        transition-duration: 0.4s;
+    }
+    .nav-tab{
+        width: calc((40%/0.7) );
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+    .social-tab {
+        width: calc((30%/0.7));
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    li {
+        list-style: none;
+        width: 100px;
+        height: 95%;
+        cursor: pointer;
+        transition-duration: 0.8s;
+        border-bottom: 1px solid rgba(0,0,0,0);
+    }
+    p {
+        font-size: 1.2em;
+    }
+    li:hover {
+        color: rgba(255,255,255,1);
+        border-bottom: 1px solid rgba(255,255,255,1);
+        transition-duration: 0.4s;
+    }
+}
+
+@media (max-width: 780px){
+    .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .mobile-nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .desktop-nav{
+        display:none;
+    }
+    .menu-button{
+        position: absolute;
+        left: 15px;
+    }
+    .header-title {
+        font-size: 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition-duration: 0.8s;
+    }
+    .drawer-list {
+        margin-top: 50px;
+    }
+    li {
+        list-style: none;
+        width: 100px;
+        height: 95%;
+        cursor: pointer;
+        transition-duration: 0.8s;
+        border-bottom: 1px solid rgba(0,0,0,1);
+        padding: 15px;
+        margin: 15px;
+    }
+    label {
+        font-size: 1.2em;
+    }
+    .social-tab {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 160px;
+    }
+    
+}
+
