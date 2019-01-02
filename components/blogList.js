@@ -86,7 +86,7 @@ class BlogList extends Component {
                                 border-radius: 5px;
                                 margin: 10px;
                                 padding: 10px;
-                                max-width: 25%;
+                                max-width: 20%;
                                 min-width: 200px;
                                 transition-duration: 1s;
                                 background: #ECF0F180;

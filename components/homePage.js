@@ -58,9 +58,7 @@ class HomePage extends Component {
             font-size: 4em;
             font-weight: 500;
             //width: 100%;
-            padding: 15px;
-           // border: 2px solid #353535;
-            //border-radius: 25px;
+            //padding: 15px;
             color: #DDDDDD;
             margin: auto;
             //background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);

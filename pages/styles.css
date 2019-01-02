@@ -25,6 +25,7 @@ body {
     color: #353535;
     flex-flow: column;
     margin: -2px;
+    overflow: hidden;
     /* padding-top:45vh; */
 }
 
