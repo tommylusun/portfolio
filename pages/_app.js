@@ -3,6 +3,7 @@ import App, { Container} from 'next/app'
 import Head from 'next/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import './styles.css';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {

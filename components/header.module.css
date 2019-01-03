@@ -8,6 +8,14 @@
     z-index: 1;
     color: #B5B5B5;
 }
+.header-title {
+    text-decoration: none;
+    color: #B5B5B5;
+    font-size: 2rem;
+    width: 30%;
+    transition-duration: 0.8s;
+    text-align: start;
+}
 
 
 @media (min-width: 781px){
@@ -30,17 +38,7 @@
     .mobile-nav{ 
         display: none;
     }
-    .header-title {
-        font-size: 2rem;
-        width: 30%;
-        cursor: pointer;
-        transition-duration: 0.8s;
-        text-align: start;
-    }
-    .header-title:hover {
-        color: rgba(255,255,255,1);
-        transition-duration: 0.4s;
-    }
+    
     .nav-tab{
         width: calc((40%/0.7) );
         display: flex;
@@ -54,18 +52,22 @@
         flex-direction: row;
         justify-content: flex-end;
     }
-    li {
-        list-style: none;
+    .nav-tab a {
+        text-decoration: none;
+        color: #B5B5B5;
         width: 100px;
         height: 95%;
         cursor: pointer;
+        padding: 5px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        margin: 10px;
         transition-duration: 0.8s;
         border-bottom: 1px solid rgba(0,0,0,0);
-    }
-    p {
         font-size: 1.2em;
+        cursor: pointer;
     }
-    li:hover {
+    .nav-tab a:hover {
         color: rgba(255,255,255,1);
         border-bottom: 1px solid rgba(255,255,255,1);
         transition-duration: 0.4s;
@@ -90,20 +92,23 @@
     }
     .menu-button{
         position: absolute;
-        left: 15px;
+        left: 5px;
     }
     .header-title {
         font-size: 2rem;
         text-align: center;
-        cursor: pointer;
-        transition-duration: 0.8s;
+        width: 100%;
     }
     .drawer-list {
         margin-top: 50px;
     }
-    li {
-        list-style: none;
-        width: 100px;
+    .drawer-list a {
+        display: block;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2em;
+        cursor: pointer;
+        width: 140px;
         height: 95%;
         cursor: pointer;
         transition-duration: 0.8s;
@@ -111,14 +116,12 @@
         padding: 15px;
         margin: 15px;
     }
-    label {
-        font-size: 1.2em;
-    }
     .social-tab {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        width: 160px;
+        justify-content: start;
+        padding: 15px;
+        width: 200px;
     }
     
 }

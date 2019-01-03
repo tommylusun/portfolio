@@ -4,6 +4,7 @@ import anime from 'animejs';
 import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
+import styles from './blogList.module.css';
 
 
 class BlogList extends Component {
@@ -60,53 +61,24 @@ class BlogList extends Component {
                 const document = post.data;
                 return (
                     <Link href={"/blogPost?id=" + post.id}>
-                        <div className="post" style={{cursor: 'pointer'}}>
-                        
-                            <div >
-                                <div>
-                                    <img style={{maxWidth: '100%'}} src={document.image.url}></img>
-                                </div>
-                                <div style={{fontSize: '1.5em'}}>
-                                    {RichText.asText(document.title)}
-                                </div>
-                                <div className="date">
-                                    <p>{document.date}</p>
-                                </div>
-                                <div style={{fontSize: '1em'}}>
-                                    {RichText.render(document.blurb, this.linkResolver)}
-                                </div>
-                            </div>
+                        <a className={styles.post}>
                        
-                        <div className="post-footer">
+                        <div >
+                            <div>
+                                <img style={{maxWidth: '100%'}} src={document.image.url}></img>
+                            </div>
+                            <div style={{fontSize: '1.5em'}}>
+                                {RichText.asText(document.title)}
+                            </div>
+                            <div className={styles.date}>
+                                <p>{document.date}</p>
+                            </div>
+                            <div style={{fontSize: '1em'}}>
+                                {RichText.render(document.blurb, this.linkResolver)}
+                            </div>
                         </div>
-                        <style jsx>{`
-                            .post {
-                                display: block;
-                                text-align: start;
-                                border-radius: 5px;
-                                margin-top: 10px;
-                                padding: 10px;
-                                max-width: 20%;
-                                min-width: 200px;
-                                transition-duration: 1s;
-                                background: #ECF0F180;
-                            }
-                            .post:hover{
-                                transform: scale(1.025);
-                                transition-duration: 0.5s;
-                                background: #ECF0F1F0;
-                                box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4);
-                            }
-                            .date {
-                                font-style: italic;
-                                font-size: 0.75rem;
-                            }
-                            .post-footer {
-                                /* border-bottom: 1px solid grey; */
-                                width: 300px;
-                            }`}
-                        </style>
-                        </div>
+                   
+                        </a>
                     </Link>
                 );
             });

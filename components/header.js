@@ -6,8 +6,9 @@ import { SocialIcon } from 'react-social-icons';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import styles from './header.module.css'
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 
 class Header extends Component {
@@ -15,7 +16,7 @@ class Header extends Component {
     state = {
         left: false
         }
-    socialMedia=['twitter.com','google.com','instagram.com','linkedin.com'];
+    socialMedia=['https://google.com','https://instagram.com','https://linkedin.com'];
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
         const AOS = isBrowser ? require('aos') : undefined;
@@ -37,14 +38,16 @@ class Header extends Component {
             return (
                 <>
                     <div className="social-icon"style={{display: 'inline', padding: '5px'}}>
-                        <SocialIcon url={url}/>
+                        <Tooltip title={url} interactive>
+                            <SocialIcon url={url}/>
+                        </Tooltip>
                     </div>
                     <style jsx>{`
                         .social-icon {
                             transition-duration: 0.5s;
                         }
                         .social-icon:hover {
-                            transform: scale(1.1);
+                            transform: scale(1);
                             transition-duration: 0.1s;
                         }
                     `}</style>
@@ -61,25 +64,20 @@ class Header extends Component {
                     <div className={styles["drawer-list"]} onClick={this.toggleDrawer}
                         onKeyDown={this.toggleDrawer}>
                         <Link prefetch href="/about">
-                            <li>
-                                <label>About</label>
-                            </li>    
+                            <a>About</a>
                         </Link>
                         <Link prefetch href="/projects">
-                            <li>
-                                <label>Projects</label>
-                            </li>
+                            <a>Projects</a>
                         </Link>
                         <Link prefetch href="/blog">
-                            <li>
-                                <label>Blog</label>
-                            </li>
+                            <a>Blog</a>
                         </Link>
-                        <div className={styles["social-tab"]}>
-                            {socialMedia}
-                        </div>
-                        
                     </div>
+                    <div className={styles["social-tab"]}>
+                        {socialMedia}
+                    </div>
+                        
+                    
                 </SwipeableDrawer>
                 <div onClick={this.toggleDrawer}   className={styles["menu-button"]}>
                     <IconButton color="inherit" aria-label="Menu">
@@ -87,37 +85,31 @@ class Header extends Component {
                     </IconButton>
                 </div>
             </div>);
+        const desktopNav = (<div className={styles['desktop-nav']}>
+                <div className={styles['nav-tab']}>
+                    <Link prefetch href="/about">
+                        <a>About</a>
+                    </Link>
+                    <Link prefetch href="/projects">
+                        <a>Projects</a>
+                    </Link>
+                    <Link prefetch href="/blog">
+                        <a>Blog</a>
+                    </Link>
+                </div>
+                <div className={styles['social-tab']}>
+                    {socialMedia}
+                </div>
+            </div>);
         
-            
         return (
             <div className={styles.header}>
                 <div className={styles['header-content']}>
                     {navMenu}
                     <Link prefetch href="/">
-                        <div className={styles['header-title']}>Tommy Lusun</div>
+                        <a className={styles['header-title']}>Tommy Lusun</a>
                     </Link>
-                    <div className={styles['desktop-nav']}>
-                        <div className={styles['nav-tab']}>
-                            <Link prefetch href="/about">
-                                <li>
-                                    <p>About</p>
-                                </li>    
-                            </Link>
-                            <Link prefetch href="/projects">
-                                <li>
-                                    <p>Projects</p>
-                                </li>
-                            </Link>
-                            <Link prefetch href="/blog">
-                                <li>
-                                    <p>Blog</p>
-                                </li>
-                            </Link>
-                        </div>
-                        <div className={styles['social-tab']}>
-                            {socialMedia}
-                        </div>
-                    </div>
+                    {desktopNav}
                 </div>
             </div>);
     }
