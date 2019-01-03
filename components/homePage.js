@@ -19,7 +19,7 @@ class HomePage extends Component {
         });
         anime({
             targets: '#first-text',
-            delay: 200,
+            delay: 300,
             translateY: {
                 value: [-500, 0]
             },

@@ -32,10 +32,9 @@ class Project extends Component {
         let document = this.props.document;
         return (
             <div className={styles.projectContainer}>
-                <div className={styles.content}>
+                <div data-aos-offset="300" data-aos-anchor-placement="middle-bottom" data-aos="fade-up" className={styles.content}>
 
-                
-                    <div data-aos-offset="100" data-aos-anchor-placement="top-bottom" data-aos="fade-in">
+                    <div>
                     <label style={{fontSize: '3em'}}>{RichText.asText(document.project_name)}</label>
                     </div>
 
