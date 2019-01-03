@@ -1,9 +1,5 @@
 import { Component } from 'react';
-import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import Prismic from 'prismic-javascript';
-import {RichText, Date} from 'prismic-reactjs';
-import Link from 'next/link';
 import Project from './project';
 
 
@@ -26,11 +22,14 @@ class BlogList extends Component {
         const apiEndpoint = 'https://tlusun-portfolio.prismic.io/api/v2';
   
         Prismic.api(apiEndpoint).then(api => {
-            api.query(Prismic.Predicates.at('document.type', 'projects')).then(response => {
-                console.log(response.results);
-            if (response) {
-                this.setState({ doc: response.results });
-            }
+            api.query(Prismic.Predicates.at('document.type', 'projects'),
+            { orderings : '[projects.rank]' }).then(response => {
+                if (response) {
+                    response.results.sort( (a,b) => {
+                        return (a.data.rank - b.data.rank);
+                    });
+                    this.setState({ doc: response.results });
+                }
             });
         });
 
@@ -46,7 +45,7 @@ class BlogList extends Component {
         if (this.state.doc) {
             posts = this.state.doc.map((post) => {
                 const document = post.data;
-                return (<Project document={document}></Project>);
+                return (<Project key={post.id} document={document}></Project>);
             });
         }
         return (

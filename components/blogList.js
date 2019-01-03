@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
@@ -39,8 +38,8 @@ class BlogList extends Component {
         const apiEndpoint = 'https://tlusun-portfolio.prismic.io/api/v2';
   
         Prismic.api(apiEndpoint).then(api => {
-            api.query(Prismic.Predicates.at('document.type', 'blog_post')).then(response => {
-                console.log(response);
+            api.query(Prismic.Predicates.at('document.type', 'blog_post'),
+            { orderings : '[document.first_publication_date desc]' }).then(response => {
             if (response) {
                 this.setState({ doc: response.results });
             }
@@ -62,7 +61,7 @@ class BlogList extends Component {
                 delay += 100;
                 const document = post.data;
                 return (
-                        <Link href={"/blogPost?id=" + post.id}>
+                        <Link key={post.id} href={"/blogPost?id=" + post.id}>
                         <a className={styles.post}>
                        
                             <div data-aos-offset="100" data-aos-delay={delay} data-aos-anchor-placement="middle-bottom" data-aos="fade-up">

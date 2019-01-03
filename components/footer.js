@@ -39,7 +39,7 @@ class Footer extends Component {
             align-items: center;
         }
         a {
-            padding-left: 100px;
+            padding-left: 50px;
         }
       `}</style>
 

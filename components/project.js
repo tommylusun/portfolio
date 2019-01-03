@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
 import styles from './project.module.css';
@@ -61,11 +59,12 @@ class Project extends Component {
                         <div style={{fontSize: '1.1em'}}>
                             {RichText.render(document.description)}
                         </div>
+                        <h5>Stack</h5>
                         <div className={styles.techSection}>
-                            <h5>Stack</h5>
+                            
                             {document.technology_stack.split(' ').map( (stack) => {
                                 delay += 100;
-                                return (<span data-aos-offset="100" data-aos-delay={delay} data-aos-anchor-placement="middle-bottom" data-aos="fade-up" style={{padding: '20px'}}>{stack}</span>)
+                                return (<span key={stack} data-aos-offset="100" data-aos-delay={delay} data-aos-anchor-placement="middle-bottom" data-aos="fade-in" style={{padding: '20px'}}>{stack}</span>)
                             })}
                         </div>
                     </div>

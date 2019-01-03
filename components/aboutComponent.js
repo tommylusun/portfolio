@@ -1,16 +1,10 @@
 import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import Prismic from 'prismic-javascript';
-import {RichText, Date} from 'prismic-reactjs';
-import Link from 'next/link';
 import Project from './project';
 
 
 class AboutComponent extends Component {
-    state = {
-        doc: null,
-    }
 
     componentDidMount() {
         const isBrowser = typeof window !== 'undefined';
@@ -22,18 +16,6 @@ class AboutComponent extends Component {
             duration: 500,
             anchorPlacement: 'bottom-top'
         });
-
-        const apiEndpoint = 'https://tlusun-portfolio.prismic.io/api/v2';
-  
-        Prismic.api(apiEndpoint).then(api => {
-            api.query(Prismic.Predicates.at('document.type', 'projects')).then(response => {
-                console.log(response.results);
-            if (response) {
-                this.setState({ doc: response.results });
-            }
-            });
-        });
-
     }
 
     componentWillReceiveProps (){ 
@@ -41,14 +23,6 @@ class AboutComponent extends Component {
     } 
 
     render() {
-        
-        let posts = null;
-        if (this.state.doc) {
-            posts = this.state.doc.map((post) => {
-                const document = post.data;
-                return (<Project document={document}></Project>);
-            });
-        }
         return (
             <div className="about-container">
                 <div className="about-title">
@@ -57,6 +31,9 @@ class AboutComponent extends Component {
                     <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="about-header">
                         <p style={{fontSize: '2em'}}>About</p>
                     </div>
+                </div>
+                <div data-aos-delay="500" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="about-header">
+                        <h2>Coming Soon</h2>
                 </div>
                 <style jsx>{`
                     .head {

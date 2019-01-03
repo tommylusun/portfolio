@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import Link from 'next/link'
 import { SocialIcon } from 'react-social-icons';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -36,22 +35,11 @@ class Header extends Component {
     render() {
         const socialMedia = this.socialMedia.map( (url) => {
             return (
-                <>
-                    <div className="social-icon"style={{display: 'inline', padding: '5px'}}>
-                        <Tooltip title={url} interactive>
-                            <SocialIcon url={url}/>
-                        </Tooltip>
-                    </div>
-                    <style jsx>{`
-                        .social-icon {
-                            transition-duration: 0.5s;
-                        }
-                        .social-icon:hover {
-                            transform: scale(1);
-                            transition-duration: 0.1s;
-                        }
-                    `}</style>
-                </>
+                <div key={url} className="social-icon"style={{display: 'inline', padding: '5px'}}>
+                    <Tooltip title={url} interactive>
+                        <SocialIcon url={url}/>
+                    </Tooltip>
+                </div>
             );
         });
         const navMenu = (

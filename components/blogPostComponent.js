@@ -1,9 +1,7 @@
 import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
-import anime from 'animejs';
 import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
-import Link from 'next/link';
 
 class BlogPostComponent extends Component {
     state = {
@@ -54,7 +52,6 @@ class BlogPostComponent extends Component {
         } else if (doc.type === 'blog_post') {
         return '/blog/' + doc.uid;
         }
-    
         // Default to homepage
         return '/';
     }
