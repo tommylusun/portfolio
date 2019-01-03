@@ -4,7 +4,7 @@
     margin-top: 50px;
     padding: 50px;
     margin-bottom: 50px;
-    /* background: #66a6ff; */
+    background: #eeeeeeaa;
     /* background: #66a6ff;
     background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
     background-blend-mode: multiply,multiply; */
@@ -16,11 +16,47 @@
     margin: auto;
 }
 .content div {
-    padding: 10px;
+    padding: 5px;
+}
+.imageContainer {
+    /* min-width: 100vw;
+    margin: auto;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+    background-blend-mode: multiply,multiply; */
 }
 .date {
     font-style: italic;
     font-size: 0.75rem;
+}
+.linksSection {
+    display: flex;
+    justify-content: center;
+}
+.linksSection a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    /* border: 1px solid grey; */
+    border-radius: 50px;
+    transition-duration: 0.5s;
+    min-width: 100px;
+}
+.linksSection a:hover{
+    
+    color: white;
+    /* border: 1px solid rgb(107, 107, 107); */
+    box-shadow: 0px 10px 25px -9px rgba(0,0,0,0.3);
+    transition-duration: 0.2s;
+}
+.techSection {
+    font-size: 1.1rem;
+    color: rgba(0,0,0,0.7);
+
 }
 @media (max-width: 780px) {
     .projectContainer {

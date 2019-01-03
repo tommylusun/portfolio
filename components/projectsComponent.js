@@ -55,7 +55,7 @@ class BlogList extends Component {
                 <div className="head">
                 
                 </div>
-                <div className="projects-header">
+                <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="projects-header">
                     <p style={{fontSize: '2em'}}>Projects</p>
                 </div>
             </div>

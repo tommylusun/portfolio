@@ -54,7 +54,7 @@ class AboutComponent extends Component {
                 <div className="about-title">
                     <div className="head">
                     </div>
-                    <div className="about-header">
+                    <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="about-header">
                         <p style={{fontSize: '2em'}}>About</p>
                     </div>
                 </div>

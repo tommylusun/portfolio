@@ -1,15 +1,30 @@
+.blogList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+}
 .post {
     text-decoration: none;
     color: black;
     display: block;
     text-align: start;
     border-radius: 5px;
-    margin: 10px;
+    margin-top: 20px;
     padding: 10px;
-    max-width: 25%;
-    min-width: 200px;
+    max-width: 28%;
+    /* min-width: 200px; */
     transition-duration: 1s;
     background: #ECF0F180;
+    overflow: hidden;
+}
+.post p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.title {
+    font-size: 1.5rem;
 }
 .date {
     font-style: italic;
@@ -23,6 +38,12 @@ iframe {
     width: 100% !important;
     height: 400px;
 }
+.image {
+    max-width: 100%;
+}
+.blurb {
+    font-size: 0.9rem;
+}
 @media (min-width: 780px) {
     .post:hover{
         transform: scale(1.025);
@@ -30,20 +51,39 @@ iframe {
         background: #ECF0F1F0;
         box-shadow: 0px 20px 45px -9px rgba(0,0,0,0.4);
     }
+    
 }
 @media (max-width: 780px) {
+    .blogList {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .title {
+        font-size: 1rem;
+    }
+    .image {
+        max-width: 80%;
+    }
+    .blurb {
+        font-size: 0.8rem;
+    }
     .post {
         display: block;
-        text-align: start;
-        border-radius: 5px;
-        margin: auto;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        padding: 10px;
-        max-width: 95%;
-        min-width: 200px;
+        text-align: center;
+        border-radius: 0px;
+        margin: 2.5%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 0px;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        max-width: 40%;
+        min-width: 40%;
         transition-duration: 1s;
-        background: #ECF0F1F0;
+        background: white;
+        border-radius: 0px;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+        overflow: hidden;
     }
     .post:active{
         transform: scale(1.025);

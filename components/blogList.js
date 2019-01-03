@@ -57,29 +57,32 @@ class BlogList extends Component {
         
         let posts = null;
         if (this.state.doc) {
+            let delay = 100;
             posts = this.state.doc.map((post) => {
+                delay += 100;
                 const document = post.data;
                 return (
-                    <Link href={"/blogPost?id=" + post.id}>
+                        <Link href={"/blogPost?id=" + post.id}>
                         <a className={styles.post}>
                        
-                        <div >
-                            <div>
-                                <img style={{maxWidth: '100%'}} src={document.image.url}></img>
+                            <div data-aos-offset="100" data-aos-delay={delay} data-aos-anchor-placement="middle-bottom" data-aos="fade-up">
+                                <div>
+                                    <img className={styles.image} src={document.image.url}></img>
+                                </div>
+                                <div className={styles.title}>
+                                    {RichText.asText(document.title)}
+                                </div>
+                                <div className={styles.date}>
+                                    <p>{document.date}</p>
+                                </div>
+                                <div className={styles.blurb}>
+                                    {RichText.render(document.blurb, this.linkResolver)}
+                                </div>
                             </div>
-                            <div style={{fontSize: '1.5em'}}>
-                                {RichText.asText(document.title)}
-                            </div>
-                            <div className={styles.date}>
-                                <p>{document.date}</p>
-                            </div>
-                            <div style={{fontSize: '1em'}}>
-                                {RichText.render(document.blurb, this.linkResolver)}
-                            </div>
-                        </div>
                    
                         </a>
                     </Link>
+                    
                 );
             });
         }
@@ -90,12 +93,12 @@ class BlogList extends Component {
                 <div className="head">
                 
                 </div>
-                <div className="blog-header">
+                <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="blog-header">
                     <p style={{fontSize: '1.5em'}}>Latest Posts</p>
                     <p style={{fontSize: '0.5em'}}>These are posts I make. They can be about anything.</p>
                 </div>
             </div>
-            <div className="blog-list">
+            <div className={styles.blogList}>
                 {posts}
             </div>
             <style jsx>{`
@@ -106,12 +109,6 @@ class BlogList extends Component {
                 .blog-container {
                     min-height: 100vh;
                     // background: linear-gradient(180deg, #FFB3A7 0%, #BE90D4 35%, #BE90D4 100%);
-                }
-                .blog-list {
-                    display: flex;
-                    flex-wrap: wrap;
-                    width: 80%;
-                    margin: auto;
                 }
                 .blog-list-title {
                     background: #BE90D4;
