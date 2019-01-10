@@ -2,6 +2,7 @@ import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
 import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
+import {Helmet} from "react-helmet";
 
 class BlogPostComponent extends Component {
     state = {
@@ -94,6 +95,10 @@ class BlogPostComponent extends Component {
             };
             post = (
                     <div className="post">
+                        <Helmet>
+                            <title>{`${RichText.asText(document.title)}`}</title>
+                            <meta name="description" content={RichText.asText(document.blurb)} />
+                        </Helmet>
                         <div className="post-header">
                         <div className="head">               
                             </div>
@@ -179,6 +184,7 @@ class BlogPostComponent extends Component {
         }
         return (
             <div className="blog-container">
+                
                 <div className="blog-post">
                     {post}
                 </div>

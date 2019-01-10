@@ -20,11 +20,13 @@
     "animejs": "^2.2.0",
     "aos": "^v3.0.0-beta.6",
     "next": "^7.0.2",
+    "next-ga": "^2.3.4",
     "node-sass": "^4.10.0",
     "prismic-javascript": "^2.0.1",
     "prismic-reactjs": "^0.3.2",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "react-social-icons": "^3.1.0"

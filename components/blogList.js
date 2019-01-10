@@ -4,6 +4,7 @@ import Prismic from 'prismic-javascript';
 import {RichText, Date} from 'prismic-reactjs';
 import Link from 'next/link';
 import styles from './blogList.module.css';
+import {Helmet} from "react-helmet";
 
 
 class BlogList extends Component {
@@ -88,13 +89,18 @@ class BlogList extends Component {
         return (
             <div className="blog-container">
             
+            <Helmet>
+                <title>My blog - Thoughts from a developer</title>
+                <meta name="description" content="These are posts I write. They can be about anything. Hopefully they're useful things." />
+            </Helmet>
+
             <div className="blog-list-title">
                 <div className="head">
                 
                 </div>
                 <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="blog-header">
                     <p style={{fontSize: '1.5em'}}>Latest Posts</p>
-                    <p style={{fontSize: '0.5em'}}>These are posts I make. They can be about anything.</p>
+                    <p style={{fontSize: '0.5em'}}>These are posts I write. They can be about anything.</p>
                 </div>
             </div>
             <div className={styles.blogList}>

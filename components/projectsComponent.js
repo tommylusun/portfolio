@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Prismic from 'prismic-javascript';
 import Project from './project';
+import {Helmet} from "react-helmet";
 
 
 class BlogList extends Component {
@@ -50,17 +51,21 @@ class BlogList extends Component {
         }
         return (
             <div className="projects-container">
-            <div className="projects-list-title">
-                <div className="head">
-                
+            <Helmet>
+                <title>Software Developer Projects - React and Angular Demo Applications and Projects</title>
+                <meta name="description" content="My current list of projects. These will change as time goes on, as do all things." />
+            </Helmet>
+                <div className="projects-list-title">
+                    <div className="head">
+                    
+                    </div>
+                    <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="projects-header">
+                        <p style={{fontSize: '2em'}}>Projects</p>
+                    </div>
                 </div>
-                <div data-aos-delay="100" data-aos-anchor-placement="middle-bottom" data-aos="fade-in" className="projects-header">
-                    <p style={{fontSize: '2em'}}>Projects</p>
+                <div className="projects-list">
+                    {posts}
                 </div>
-            </div>
-            <div className="projects-list">
-                {posts}
-            </div>
             <style jsx>{`
                 .head {
                     height: 80px;

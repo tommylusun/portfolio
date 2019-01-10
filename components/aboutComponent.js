@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import '../node_modules/aos/dist/aos.css';
 import Prismic from 'prismic-javascript';
-import Project from './project';
+import {Helmet} from "react-helmet";
 
 
 class AboutComponent extends Component {
@@ -25,6 +25,10 @@ class AboutComponent extends Component {
     render() {
         return (
             <div className="about-container">
+                <Helmet>
+                    <title>Software Developer Resume and Life Story - Tommy Lusun</title>
+                    <meta name="description" content="" />
+                </Helmet>
                 <div className="about-title">
                     <div className="head">
                     </div>

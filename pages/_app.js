@@ -4,8 +4,9 @@ import Head from 'next/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import './styles.css';
-
-export default class MyApp extends App {
+import Router from "next/router";
+import withGA from "next-ga";
+export default withGA("UA-132200349-2", Router)(class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
 
@@ -33,4 +34,4 @@ export default class MyApp extends App {
       </Container>
     )
   }
-}
+});
